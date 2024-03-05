@@ -82,6 +82,18 @@ export const Register = (props) => {
           <div className="form-group">
             <input
               onChange={updateUser}
+              type="email"
+              id="email"
+              className="form-control"
+              placeholder="Email address"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateUser}
               type="text"
               id="userName"
               className="form-control"
@@ -95,11 +107,51 @@ export const Register = (props) => {
           <div className="form-group">
             <input
               onChange={updateUser}
-              type="email"
-              id="email"
+              type="text"
+              id="password"
               className="form-control"
-              placeholder="Email address"
+              placeholder="Password"
               required
+              autoFocus
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateUser}
+              type="text"
+              id="verifyPassword"
+              className="form-control"
+              placeholder="Verify Password"
+              required
+              autoFocus
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateUser}
+              type="text"
+              id="verifyPassword"
+              className="form-control"
+              placeholder="Profile Pic URL"
+              required
+              autoFocus
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateUser}
+              type="text"
+              id="bio"
+              className="form-control"
+              placeholder="Bio"
+              required
+              autoFocus
             />
           </div>
         </fieldset>
