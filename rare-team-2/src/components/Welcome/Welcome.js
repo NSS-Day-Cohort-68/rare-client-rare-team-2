@@ -1,4 +1,5 @@
 import "./Welcome.css";
+import { useRef } from "react";
 
 export const Welcome = () => {
   return (

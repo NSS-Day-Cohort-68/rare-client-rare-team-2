@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { useRef } from "react";
 
 export const Authorized = ({ children }) => {
   let location = useLocation();

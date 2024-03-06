@@ -4,6 +4,7 @@ import { Login } from "./components/auth/Login.js";
 import { Register } from "./components/auth/Register.js";
 import { Authorized } from "./views/Authorized.js";
 import { ApplicationViews } from "./views/ApplicationViews.js";
+import { useRef } from "react";
 
 export const App = () => {
   return (
