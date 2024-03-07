@@ -31,7 +31,7 @@ export const AdminNav = () => {
           </li>
           <li className="item">
             <Link className="navbar-link" to="/categoryManager">
-              <a href="#" className="item--wrapper" data-item="My Recipes">
+              <a href="#" className="item--wrapper" data-item="Category Manager">
                 Category Manager
               </a>{" "}
             </Link>
