@@ -1,26 +1,29 @@
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Login } from "./components/auth/Login.js";
 import { Register } from "./components/auth/Register.js";
 import { Authorized } from "./views/Authorized.js";
-import { ApplicationViews } from "./views/ApplicationView.js";
+import { ApplicationViews } from "./views/ApplicationViews.js";
+import { useRef } from "react";
 
-function App() {
+export const App = () => {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      <Route
-        path="*"
-        element={
-          <Authorized>
-            <ApplicationViews />
-          </Authorized>
-        }
-      />
-    </Routes>
+        <Route
+          path="*"
+          element={
+            //Check if the user is authorized first
+            <Authorized>
+              {/* ApplicationViews is the CHILD component of Authorized */}
+              <ApplicationViews />
+            </Authorized>
+          }
+        />
+      </Routes>
+    </>
   );
-}
-
-export default App;
+};

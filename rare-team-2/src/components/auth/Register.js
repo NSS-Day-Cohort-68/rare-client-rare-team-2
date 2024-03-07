@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser, getUserByEmail } from "../../services/userService";
-import "./Login.css";
-import { GeneralNav } from "../nav/GeneralNav";
+import "./Register.css";
 
 export const Register = (props) => {
-  const [customer, setCustomer] = useState({
+  const [user, setUser] = useState({
     username: "",
     email: "",
     bio: "",
@@ -14,7 +13,7 @@ export const Register = (props) => {
   let navigate = useNavigate();
 
   const registerNewUser = () => {
-    createUser(customer).then((createdUser) => {
+    createUser(user).then((createdUser) => {
       if (createdUser.hasOwnProperty("id")) {
         localStorage.setItem(
           "rare_user",
@@ -31,7 +30,7 @@ export const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    getUserByEmail(customer.email).then((response) => {
+    getUserByEmail(user.email).then((response) => {
       if (response.length > 0) {
         // Duplicate email. No good.
         window.alert("Account with that email address already exists");
@@ -43,23 +42,48 @@ export const Register = (props) => {
   };
 
   const updateUser = (e) => {
-    const copy = { ...customer };
+    const copy = { ...user };
     copy[e.target.id] = e.target.value;
-    setCustomer(copy);
+    setUser(copy);
   };
 
   return (
     <main style={{ textAlign: "center" }}>
-      <GeneralNav />
       <form className="form-login" onSubmit={handleRegister}>
         <h1>Rare Publishing</h1>
-        <h2>Please Register</h2>
+        <h2>Profile Registration</h2>
         <fieldset>
           <div className="form-group">
             <input
               onChange={updateUser}
               type="text"
-              id="fullName"
+              id="firstName"
+              className="form-control"
+              placeholder="Enter your first name"
+              required
+              autoFocus
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateUser}
+              type="text"
+              id="lastName"
+              className="form-control"
+              placeholder="Enter your last name"
+              required
+              autoFocus
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateUser}
+              type="text"
+              id="userName"
               className="form-control"
               placeholder="Enter your username"
               required
@@ -75,18 +99,6 @@ export const Register = (props) => {
               id="email"
               className="form-control"
               placeholder="Email address"
-              required
-            />
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <input
-              onChange={updateUser}
-              type="text"
-              id="bio"
-              className="form-control"
-              placeholder="Tell us about yourself"
               required
             />
           </div>
