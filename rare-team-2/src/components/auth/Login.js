@@ -1,24 +1,29 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { getUserByEmail } from "../../services/userService";
-import "./Register.css";
+import { Link, useNavigate } from "react-router-dom";
+import { getUserByUsername } from "../../services/userService";
 
 export const Login = () => {
-  const [email, set] = useState("example@example.com");
+  const [username, setUsername] = useState("john_doe");
+  const [password, setPassword] = useState("password123");
   const navigate = useNavigate();
+  let user = {
+    "username": username,
+    "password": password,
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    getUserByEmail(email).then((foundUsers) => {
-      if (foundUsers.length === 1) {
-        const user = foundUsers[0];
+    getUserByUsername(username).then((foundUsers) => {
+
+      if (foundUsers.length !== 1) {
+        const relevantUser = foundUsers;
+        console.log(foundUsers)
         localStorage.setItem(
           "rare_user",
           JSON.stringify({
-            id: user.id,
-            username: user.username,
+            id: relevantUser.id,
+            userName: relevantUser.username,
           })
         );
 
@@ -32,17 +37,17 @@ export const Login = () => {
   return (
     <main className="container-login">
       <section>
-        <form className="form-login" onSubmit={handleLogin}>
+        <form className="form-login" >
           <h1>Rare Publishing</h1>
           <h2>Please sign in</h2>
           <fieldset>
             <div className="form-group">
               <input
-                type="email"
-                value={email}
-                onChange={(e) => set(e.target.value)}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
-                placeholder="Email address"
+                placeholder="Username"
                 required
                 autoFocus
               />
@@ -50,7 +55,19 @@ export const Login = () => {
           </fieldset>
           <fieldset>
             <div className="form-group">
-              <button className="login-btn btn-info" type="submit">
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control"
+                placeholder="Password"
+                required
+              />
+            </div>
+          </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <button onClick={handleLogin} className="login-btn btn-info" type="button">
                 Sign in
               </button>
             </div>
@@ -63,3 +80,4 @@ export const Login = () => {
     </main>
   );
 };
+

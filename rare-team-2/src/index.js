@@ -2,6 +2,7 @@ import { App } from "./App.js";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import { useRef } from "react";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
