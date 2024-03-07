@@ -5,10 +5,15 @@ import "./Register.css";
 
 export const Register = (props) => {
   const [user, setUser] = useState({
-    username: "",
+    first_name: "",
+    last_name: "",
     email: "",
     bio: "",
-    created: new Date(),
+    username: "",
+    password: "",
+    profile_image_url: "a.jpg",
+    created_on: new Date(),
+    active: 1,
   });
   let navigate = useNavigate();
 
@@ -22,7 +27,6 @@ export const Register = (props) => {
             username: createdUser.username,
           })
         );
-
         navigate("/");
       }
     });
@@ -31,7 +35,7 @@ export const Register = (props) => {
   const handleRegister = (e) => {
     e.preventDefault();
     getUserByEmail(user.email).then((response) => {
-      if (response.length > 0) {
+      if (response && response.email === user.email) {
         // Duplicate email. No good.
         window.alert("Account with that email address already exists");
       } else {
@@ -45,6 +49,7 @@ export const Register = (props) => {
     const copy = { ...user };
     copy[e.target.id] = e.target.value;
     setUser(copy);
+    console.log(user);
   };
 
   return (
@@ -57,7 +62,7 @@ export const Register = (props) => {
             <input
               onChange={updateUser}
               type="text"
-              id="firstName"
+              id="first_name"
               className="form-control"
               placeholder="Enter your first name"
               required
@@ -70,7 +75,7 @@ export const Register = (props) => {
             <input
               onChange={updateUser}
               type="text"
-              id="lastName"
+              id="last_name"
               className="form-control"
               placeholder="Enter your last name"
               required
@@ -95,7 +100,7 @@ export const Register = (props) => {
             <input
               onChange={updateUser}
               type="text"
-              id="userName"
+              id="username"
               className="form-control"
               placeholder="Enter your username"
               required
@@ -116,27 +121,15 @@ export const Register = (props) => {
             />
           </div>
         </fieldset>
+
         <fieldset>
           <div className="form-group">
             <input
               onChange={updateUser}
               type="text"
-              id="verifyPassword"
+              id="profile_image_url"
               className="form-control"
-              placeholder="Verify Password"
-              required
-              autoFocus
-            />
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <input
-              onChange={updateUser}
-              type="text"
-              id="verifyPassword"
-              className="form-control"
-              placeholder="Profile Pic URL"
+              placeholder="Profile Image URL"
               required
               autoFocus
             />
