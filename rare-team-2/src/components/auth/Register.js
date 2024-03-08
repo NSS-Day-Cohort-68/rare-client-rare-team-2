@@ -49,7 +49,6 @@ export const Register = (props) => {
     const copy = { ...user };
     copy[e.target.id] = e.target.value;
     setUser(copy);
-    console.log(user);
   };
 
   return (
