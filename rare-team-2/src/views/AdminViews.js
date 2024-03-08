@@ -7,6 +7,7 @@ import { Welcome } from '../components/Welcome/Welcome.js';
 import { AdminNav } from '../components/Nav/AdminNav.js';
 import { Category } from '../components/category/Category.js';
 import { NewCategoryForm } from '../components/category/NewCategoryForm.js';
+import { EditCategoryForm } from '../components/category/EditCategoryForm.js';
 
 export const AdminViews = ({ currentUser }) => {
   return (
@@ -26,6 +27,7 @@ export const AdminViews = ({ currentUser }) => {
         <Route path="categoryManager" element={<Category />} />
       </Route>
       <Route path="newCategory" element={<NewCategoryForm />} />
+      <Route path="editCategory/:categoryId" element={<EditCategoryForm />} />
     </Routes>
   );
 };
