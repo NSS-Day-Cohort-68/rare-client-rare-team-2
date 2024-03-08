@@ -1,5 +1,5 @@
-export const getPostsByUserId = (email) => {
-  return fetch(`http://localhost:8088/users?email=${email}`).then((res) =>
+export const getPostsByUserId = (userId) => {
+  return fetch(`http://localhost:8088/posts?user_Id=${userId}`).then((res) =>
     res.json()
   );
 };
