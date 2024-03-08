@@ -28,7 +28,9 @@ export const Category = () => {
                 <div key={index}>
                     Category: {categoryObj.label}
                     <button onClick={() => handleDeleteCategory(categoryObj.id)}>Delete Category</button>
+                <Link to={`/editCategory/${categoryObj.id}`}>
                     <button>Edit Category</button>
+                </Link>
                 </div>
             ))}
             <Link to={"/newCategory"}>
