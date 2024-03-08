@@ -11,5 +11,5 @@ export const createUser = (customer) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(customer),
-  }).then((res) => res.json());
+  });
 };
