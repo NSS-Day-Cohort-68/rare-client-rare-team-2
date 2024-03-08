@@ -22,9 +22,9 @@ export const AdminViews = ({ currentUser }) => {
       >
         <Route index element={<Welcome />} />
         <Route path="login" element={<Login currentUser={currentUser} />} />
+        <Route path="myposts" element={<MyPosts currentUser={currentUser} />} />
       </Route>
       <Route path="register" element={<Register />} />
-      <Route path="myposts" element={<MyPosts currentUser={currentUser} />} />
     </Routes>
   );
 };
