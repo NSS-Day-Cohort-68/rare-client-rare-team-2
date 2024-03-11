@@ -11,6 +11,7 @@ import { NewCategoryForm } from '../components/category/NewCategoryForm.js';
 import { EditCategoryForm } from '../components/category/EditCategoryForm.js';
 import { MyPosts } from "../components/Posts/MyPosts.js";
 import { AllPosts } from '../components/Posts/AllPosts.js';
+import { NewPostForm } from '../components/Posts/NewPostForm.js';
 
 export const AdminViews = ({ currentUser }) => {
   return (
@@ -29,6 +30,7 @@ export const AdminViews = ({ currentUser }) => {
 
         <Route path="myposts" element={<MyPosts currentUser={currentUser} />} />
         <Route path="allposts" element={<AllPosts currentUser={currentUser} />} />
+        <Route path="newpost" element={<NewPostForm currentUser={currentUser} />} />
         <Route path="register" element={<Register />} />
         <Route path="categoryManager" element={<Category />} />
       </Route>
