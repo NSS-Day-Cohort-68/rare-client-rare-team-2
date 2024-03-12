@@ -3,12 +3,6 @@ export const getPostsByUserId = async (userId) => {
   return await res.json();
 };
 
-<<<<<<< HEAD
-export const getPostdets = async (id) => {
-  const res = await fetch(`http://localhost:8088/posts/${id}`);
-  return res.json(); 
-};
-=======
 export const getAllPosts = () => {
   return fetch(`http://localhost:8088/posts`).then((res) =>
     res.json()
@@ -30,4 +24,8 @@ export const createPost = (post) => {
     body: JSON.stringify(post),
   }).then((res) => res.json());
 };
->>>>>>> Development
+
+export const getPostdets = async (id) => {
+  const res = await fetch(`http://localhost:8088/posts/${id}`);
+  return res.json(); 
+};
