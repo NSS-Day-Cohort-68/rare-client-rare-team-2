@@ -29,8 +29,13 @@ export const AllPosts = ({ currentUser }) => {
             <div>{post.category}</div>
           </div>
             </Link>
+        
         ))
       }
+
+      <Link to="/newpost">
+     <button>New Post!</button> 
+      </Link>
     </div>
   );
 };
