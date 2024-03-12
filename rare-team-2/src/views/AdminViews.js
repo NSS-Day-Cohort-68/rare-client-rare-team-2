@@ -43,7 +43,7 @@ export const AdminViews = ({ currentUser }) => {
           element={<NewPostForm currentUser={currentUser} />}
         />
         <Route
-          path="posts/comments/:id"
+          path="posts/:id/comments"
           element={<Comments currentUser={currentUser} />}
         />
         <Route path="register" element={<Register />} />
