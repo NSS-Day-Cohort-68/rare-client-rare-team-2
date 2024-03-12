@@ -15,7 +15,7 @@ export const Comments = ({ currentUser }) => {
   const handleSave = (e) => {
     e.preventDefault();
     if (comment.content) {
-      createComment(comment).then(navigate(`/posts/${postId}`));
+      createComment(comment).then(navigate(`/posts/${postId}/comments`));
     } else {
       window.alert("Please complete all fields");
     }
