@@ -10,6 +10,7 @@ import { Category } from '../components/category/Category.js';
 import { NewCategoryForm } from '../components/category/NewCategoryForm.js';
 import { EditCategoryForm } from '../components/category/EditCategoryForm.js';
 import { MyPosts } from "../components/Posts/MyPosts.js";
+import { PostDetails } from '../components/Posts/PostDetails.js';
 
 export const AdminViews = ({ currentUser }) => {
   return (
@@ -27,6 +28,7 @@ export const AdminViews = ({ currentUser }) => {
         <Route path="login" element={<Login currentUser={currentUser} />} />
 
         <Route path="myposts" element={<MyPosts currentUser={currentUser} />} />
+        <Route path="posts/:postId" element={<PostDetails />} />
         <Route path="register" element={<Register />} />
         <Route path="categoryManager" element={<Category />} />
       </Route>
