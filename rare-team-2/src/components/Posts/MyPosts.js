@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getPostsByUserId } from "../../services/postServices.js";
+import { Link } from "react-router-dom";
 import { deletePost } from "../../services/postServices.js";
 
 export const MyPosts = ({ currentUser }) => {
@@ -30,12 +31,14 @@ export const MyPosts = ({ currentUser }) => {
         <div>No posts to display.</div>
       ) : (
         postsByUserId.map((post) => (
-          <div key={post.id}>
+          <Link to={`/myposts/${post?.id}`}>
+          <div key={post.post_id}> 
             <div>{post.title}</div>
             <div>{post.author}</div>
             <div>{post.category}</div>
             <button onClick={() => handleDeletePost(post.id)}>Delete Post</button>
           </div>
+      </Link>
         ))
       )}
     </div>

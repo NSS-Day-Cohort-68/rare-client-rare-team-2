@@ -29,7 +29,7 @@ export const AllPosts = ({ currentUser }) => {
   return (
     <div>
              {allPosts.map((post) => (
-            <Link>
+            <Link to={`/myposts/${post?.id}`}>
           <div key={post.id}>
             <div>{post.title}</div>
             <div>{post.author}</div>
