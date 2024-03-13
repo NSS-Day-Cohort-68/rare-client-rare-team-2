@@ -13,6 +13,7 @@ import { AllPosts } from "../components/Posts/AllPosts.js";
 import { NewPostForm } from "../components/Posts/NewPostForm.js";
 import { Comments } from "../components/comments/Comments.js";
 import { NewTagForm } from "../components/tag/NewTagForm.js";
+import { AllTags } from '../components/tag/AllTags.js';
 import { PostDetails } from '../components/Posts/PostDetails.js';
 
 export const AdminViews = ({ currentUser }) => {
@@ -35,6 +36,9 @@ export const AdminViews = ({ currentUser }) => {
         <Route path="login" element={<Login currentUser={currentUser} />} />
 
         <Route path="myposts" element={<MyPosts currentUser={currentUser} />} />
+        <Route path="allposts" element={<AllPosts currentUser={currentUser} />} />
+        <Route path="newpost" element={<NewPostForm currentUser={currentUser} />} />
+        <Route path="tagmanager" element={<AllTags />} />
         <Route path="myposts/:postId" element={<PostDetails />} />
         <Route
           path="allposts"
