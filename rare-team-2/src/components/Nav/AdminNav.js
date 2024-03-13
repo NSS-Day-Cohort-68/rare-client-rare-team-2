@@ -16,7 +16,7 @@ export const AdminNav = () => {
             </Link>
           </li>
           <li className="item">
-            <Link className="navbar-link" to="/posts">
+            <Link className="navbar-link" to="/allposts">
               <a href="#" className="item--wrapper" data-item="all posts">
                 All Posts
               </a>

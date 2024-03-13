@@ -35,7 +35,7 @@ export const AdminViews = ({ currentUser }) => {
         <Route path="login" element={<Login currentUser={currentUser} />} />
 
         <Route path="myposts" element={<MyPosts currentUser={currentUser} />} />
-        <Route path="posts/:postId" element={<PostDetails />} />
+        <Route path="myposts/:postId" element={<PostDetails />} />
         <Route
           path="allposts"
           element={<AllPosts currentUser={currentUser} />}
@@ -45,7 +45,7 @@ export const AdminViews = ({ currentUser }) => {
           element={<NewPostForm currentUser={currentUser} />}
         />
         <Route
-          path="posts/:id/comments"
+          path="allposts/:id/comments"
           element={<Comments currentUser={currentUser} />}
         />
         <Route path="register" element={<Register />} />

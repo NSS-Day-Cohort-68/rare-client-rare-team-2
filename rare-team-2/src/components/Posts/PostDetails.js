@@ -8,6 +8,7 @@ export const PostDetails = () => {
 
   useEffect(() => {
     fetchPostdets();
+    console.log(post.author_username)
   }, []);
 
   const fetchPostdets = () => {
@@ -32,6 +33,7 @@ export const PostDetails = () => {
         <h2>{post.title}</h2>
         <ol>{post.content}</ol>
         <ol>{post.publication_date}</ol>
+        
         <ol>{post.author_username}</ol>
     </ul>
   );
