@@ -32,7 +32,7 @@ export const PostDetails = () => {
         <h2>{post.title}</h2>
         <ol>{post.content}</ol>
         <ol>{post.publication_date}</ol>
-        <ol>{post.author_display_name}</ol>
+        <ol>{post.author_username}</ol>
     </ul>
   );
 };
