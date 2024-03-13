@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getPostsByUserId } from "../../services/postServices.js";
 import { Link } from "react-router-dom";
+import { deletePost } from "../../services/postServices.js";
 
 export const MyPosts = ({ currentUser }) => {
   const [postsByUserId, setPostsByUserId] = useState([]);
@@ -17,6 +18,12 @@ export const MyPosts = ({ currentUser }) => {
     }
   };
 
+  const handleDeletePost = (postId) => {
+    deletePost(postId).then(() => {
+        // Once the post is deleted, fetch and set the updated list of posts
+        getAndSetPosts();
+    });
+};
 
   return (
     <div>
@@ -29,6 +36,7 @@ export const MyPosts = ({ currentUser }) => {
             <div>{post.title}</div>
             <div>{post.author}</div>
             <div>{post.category}</div>
+            <button onClick={() => handleDeletePost(post.id)}>Delete Post</button>
           </div>
       </Link>
         ))
