@@ -15,6 +15,7 @@ import { Comments } from "../components/comments/Comments.js";
 import { NewTagForm } from "../components/tag/NewTagForm.js";
 import { AllTags } from '../components/tag/AllTags.js';
 import { PostDetails } from '../components/Posts/PostDetails.js';
+import { EditTag } from '../components/tag/EditTag.js';
 
 export const AdminViews = ({ currentUser }) => {
   return (
@@ -57,6 +58,7 @@ export const AdminViews = ({ currentUser }) => {
       </Route>
       <Route path="newCategory" element={<NewCategoryForm />} />
       <Route path="newTag" element={<NewTagForm />} />
+      <Route path="editTag/:tagId" element={<EditTag />} />
       <Route path="editCategory/:categoryId" element={<EditCategoryForm />} />
     </Routes>
   );
