@@ -25,6 +25,10 @@ export const createPost = (post) => {
   }).then((res) => res.json());
 };
 
+export const getPostdets = async (id) => {
+  const res = await fetch(`http://localhost:8088/posts/${id}`);
+  return res.json(); 
+};
 export const deletePost = (postId) => {
   return fetch(`http://localhost:8088/posts/${postId}`, {
     method: "DELETE",
