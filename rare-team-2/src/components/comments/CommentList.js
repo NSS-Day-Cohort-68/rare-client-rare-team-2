@@ -20,7 +20,7 @@ export const CommentList = ({ postId }) => {
       <div className="comments">
         {comments.map((comment) => {
           return (
-            <section className="comment">
+            <section key={comment.id} className="comment">
               <div className="comment-card">
                 <p>{comment.created_on}</p>
                 <p>{comment.user}:</p>
