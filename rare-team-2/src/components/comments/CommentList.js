@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCommentsByPostId } from "../../services/commentServices";
+import { deleteComment, getCommentsByPostId } from "../../services/commentServices";
 import { Link } from "react-router-dom";
 
 export const CommentList = ({ postId }) => {
@@ -15,6 +15,12 @@ export const CommentList = ({ postId }) => {
     getAndSetComments();
   }, []);
 
+  const handleDeleteComments = (commentId) => {
+    deleteComment(commentId).then(() => {
+        getAndSetComments();
+    });
+};
+
   return (
     <article className="commentContainer">
       <div className="comments">
@@ -26,7 +32,7 @@ export const CommentList = ({ postId }) => {
                 <p>{comment.user}:</p>
                 <p>{comment.content}</p>
               </div>
-              <button>Delete</button>
+              <button onClick={() => handleDeleteComments(comment.id)}>Delete Comment</button>
             </section>
           );
         })}
