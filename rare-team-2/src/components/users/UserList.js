@@ -6,7 +6,11 @@ export const UserList = () => {
     const [allUsers, setAllUsers] = useState([]);
 
     const getAndSetUsers = () => {
-        getAllUsers().then(setAllUsers);
+        getAllUsers().then((users) => {
+            // Sort users alphabetically based on username
+            const sortedUsers = users.sort((a, b) => a.username.localeCompare(b.username));
+            setAllUsers(sortedUsers);
+        });
     };
 
     useEffect(() => {
@@ -37,9 +41,7 @@ export const UserList = () => {
                     <button>Edit User</button>
                 </div>
             ))}
-            <Link to={"/newCategory"}>
-                <button>New Category</button>
-            </Link>
         </div>
     );
 };
+
