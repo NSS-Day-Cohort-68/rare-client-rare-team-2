@@ -9,7 +9,7 @@ export const NewPostForm = ({ currentUser }) => {
     publication_date: new Date(),
     image_url: "",
     content: "",
-    approved: 1,
+    approved: 0,
     category_id: 0,
     user_id: currentUser.id
   });
