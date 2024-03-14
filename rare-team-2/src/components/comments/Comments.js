@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createComment } from "../../services/commentServices";
+import { CommentList } from "./CommentList";
+import "./Comments.css";
 
 export const Comments = ({ currentUser }) => {
   const { id: postId } = useParams();
@@ -53,6 +55,7 @@ export const Comments = ({ currentUser }) => {
           </div>
         </fieldset>
       </form>
+      <CommentList postId={postId} />
     </main>
   );
 };
