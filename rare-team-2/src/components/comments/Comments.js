@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createComment } from "../../services/commentServices";
+import { CommentList } from "./CommentList";
+import "./Comments.css";
+import { getPostdets } from "../../services/postServices";
 
 export const Comments = ({ currentUser }) => {
   const { id: postId } = useParams();
@@ -9,13 +12,25 @@ export const Comments = ({ currentUser }) => {
     author_id: currentUser.id,
     content: "",
   });
+  const [post, setPost] = useState({});
+
+  const getAndSetPost = () => {
+    getPostdets(postId).then((data) => {
+      const p = data;
+      setPost(p);
+    });
+  };
+
+  useEffect(() => {
+    getAndSetPost();
+  }, []);
 
   const navigate = useNavigate();
 
   const handleSave = (e) => {
     e.preventDefault();
     if (comment.content) {
-      createComment(comment).then(navigate(`/posts/${postId}/comments`));
+      createComment(comment).then(window.location.reload());
     } else {
       window.alert("Please complete all fields");
     }
@@ -23,8 +38,8 @@ export const Comments = ({ currentUser }) => {
 
   return (
     <main style={{ textAlign: "center" }}>
-      <h2>Post title:</h2>
-      <h2>Comments</h2>
+      <h1>Post title: {post.title}</h1>
+      <h2>Comments Section</h2>
       <form>
         <fieldset>
           <div>
@@ -53,6 +68,7 @@ export const Comments = ({ currentUser }) => {
           </div>
         </fieldset>
       </form>
+      <CommentList postId={postId} />
     </main>
   );
 };
